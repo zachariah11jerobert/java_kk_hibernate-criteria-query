@@ -14,21 +14,20 @@ import com.jerome.entities.Employee;
 import com.jerome.util.HibernateUtil;
 
 
-public class CriteriaQueryEntitySelectionClientTest_2 {
+public class CQuery_3_EntityAttributeSelection {
 
 	public static void main(String[] args) {
 
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 			CriteriaBuilder builder = session.getCriteriaBuilder();
-			CriteriaQuery<Employee> criteriaQuery = builder.createQuery(Employee.class);
+			CriteriaQuery<String> criteriaQuery = builder.createQuery(String.class);
 			Root<Employee> root = criteriaQuery.from(Employee.class);
-			criteriaQuery.select(root);
+			criteriaQuery.select(root.get("employeeName"));
 			
-			criteriaQuery.where(builder.equal(root.get("employeeId"), 2));
 			
-			Query<Employee> query = session.createQuery(criteriaQuery);
-			List<Employee> empList = query.list();
-			empList.forEach(System.out::println);
+			Query<String> query = session.createQuery(criteriaQuery);
+			List<String> empNameList = query.getResultList();
+			empNameList.forEach(System.out::println);
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}

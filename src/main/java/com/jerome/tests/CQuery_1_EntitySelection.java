@@ -14,7 +14,7 @@ import com.jerome.entities.Employee;
 import com.jerome.util.HibernateUtil;
 
 
-public class CriteriaQueryEntitySelectionClientTest_1 {
+public class CQuery_1_EntitySelection {
 
 	public static void main(String[] args) {
 
