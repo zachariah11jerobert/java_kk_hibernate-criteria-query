@@ -1,4 +1,4 @@
-package com.jerome.client;
+package com.jerome.tests;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import com.jerome.entities.Employee;
 import com.jerome.util.HibernateUtil;
 
 
-public class CriteriaQueryEntitySelectionClientTest {
+public class CriteriaQueryEntitySelectionClientTest_2 {
 
 	public static void main(String[] args) {
 

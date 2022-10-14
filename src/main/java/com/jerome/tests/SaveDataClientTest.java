@@ -1,4 +1,4 @@
-package com.jerome.client;
+package com.jerome.tests;
 
 import java.util.Date;
 
