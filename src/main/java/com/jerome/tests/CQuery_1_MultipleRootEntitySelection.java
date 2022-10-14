@@ -40,6 +40,7 @@ public class CQuery_1_MultipleRootEntitySelection {
 			criteria.where(builder.and( personRestriction, partnerRestriction ) );
 
 			List<Tuple> tuples = session.createQuery( criteria ).getResultList();
+			System.out.println("--------------------------------------------------------------");
 			for (Tuple tuple : tuples) {
 				Person person = (Person)tuple.get(0); 
 				if(person != null){
