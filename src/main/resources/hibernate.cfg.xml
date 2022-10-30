@@ -14,6 +14,6 @@
 	<property name="hibernate.show_sql">true</property>
 	<property name="hibernate.format_sql">true</property>
     
-    <mapping class="com.jerome.entities.Employee"/>
+    <mapping class="com.jerome.entities.Person"/>
   </session-factory>
 </hibernate-configuration>

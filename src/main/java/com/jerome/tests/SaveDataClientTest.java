@@ -2,11 +2,10 @@ package com.jerome.tests;
 
 import java.util.Date;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-
-import com.jerome.entities.Employee;
+import com.jerome.entities.Person;
 import com.jerome.util.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 
 
@@ -14,26 +13,38 @@ public class SaveDataClientTest {
 
 	public static void main(String[] args) {
 
-		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = null;
+		try {
+			session = sf.openSession();
 			session.beginTransaction();
-			Employee employee1 = new Employee();
-			employee1.setEmployeeName("Martin Bingel");
-			employee1.setEmail("martin.cs2017@gmail.com");
-			employee1.setSalary(50000.00);
-			employee1.setDoj(new Date());
 
-			Employee employee2 = new Employee();
-			employee2.setEmployeeName("Sean Murphy");
-			employee2.setEmail("sean.m2017@gmail.com");
-			employee2.setSalary(90000.00);
-			employee2.setDoj(new Date());
+			Person person1 = new Person();
+			person1.setName("Mark Bingel");
+			person1.setNickName("Mac");
+			person1.setAddress("Alameda Street Los Angeles");
+			person1.setCreatedOn(new Date());
+			person1.setVersion(1);
 
-			session.save(employee1);
-			session.save(employee2);
+			Person person2 = new Person();
+			person2.setName("Sean Murphy");
+			person2.setNickName("Sam");
+			person2.setAddress("Bank of Canada,234 Wellington Street");
+			person2.setCreatedOn(new Date());
+			person2.setVersion(1);
+
+			session.save(person1);
+			session.save(person2);
 
 			session.getTransaction().commit();
-		} catch (HibernateException e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			if(session != null){
+				session.close();
+			}
 		}
+
 	}
 }
